@@ -1,6 +1,6 @@
 pragma solidity ^0.8.13;
 
-contract {
+contract MultiSigWallet {
 
     event Deposit(address indexed sender, uint amount, uint balance);
     event SubmitTransaction(address indexed owner, uint indexed txIndex, address indexed to, uint value, bytes data);

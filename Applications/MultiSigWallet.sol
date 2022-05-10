@@ -8,7 +8,7 @@ contract MultiSigWallet {
     event RevokeConfirmation(address indexed owner, uint indexed txIndex);
     event ExecuteTransaction(address indexed owner, uint indexed txIndex);
 
-    address[] public owner;
+    address[] public owners;
     mapping(address => bool) public isOwner;
     uint public numConfirmationsRequired;
 
@@ -54,10 +54,10 @@ contract MultiSigWallet {
 
             address owner = _owners[i];
 
-            require(owner != address(0x0))
+            require(owner != address(0x0));
             require(!isOwner[owner]);
 
-            isOwner[owner] = owner;
+            isOwner[owner] = true;
             owners.push(owner);
         }
 
@@ -132,7 +132,7 @@ contract MultiSigWallet {
         return transactions.length;
     }
 
-    getTransaction(uint _txIndex) public view returns (
+    function getTransaction(uint _txIndex) public view returns (
         address to,
         uint value,
         bytes memory data,

@@ -2,7 +2,7 @@ pragma solidity ^0.8.13;
 
 contract MinimalProxy {
 
-    // Create a contract with the code to delegatecall to the target address
+    // Create a new contract with the code that executes delegatecall to the target address
     function clone(address target) external returns (address result) {
 
         bytes20 targetBytes = bytes20(target);

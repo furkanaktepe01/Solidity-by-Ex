@@ -108,7 +108,7 @@ contract StableSwap {
                 
                 _x = x;
             
-            } else if {
+            } else if (k == j) {
 
                 continue;
 
@@ -179,7 +179,7 @@ contract StableSwap {
 
         uint y = d;
 
-        for (uint _i; _ i < 255; ++_i) {
+        for (uint _i; _i < 255; ++_i) {
 
             y_prev = y;
 
@@ -221,6 +221,8 @@ contract StableSwap {
         uint y0 = xp[j];
 
         uint y1 = _getY(i, j, x, xp);
+
+        dy = (y0 - y1 - 1) / multipliers[j];
 
         uint fee = (dy * SWAP_FEE) / FEE_DENOMINATOR;
 

@@ -45,7 +45,7 @@ contract CSAMM {
         bool isToken0 = _tokenIn == address(token0);
 
         (IERC20 tokenIn, IERC20 tokenOut, uint resIn, uint resOut) = isToken0
-            ? (token0, token1, reserve0, reserve1);
+            ? (token0, token1, reserve0, reserve1)
             : (token1, token0, reserve1, reserve0);
 
         tokenIn.transferFrom(msg.sender, address(this), _amountIn);

@@ -25,15 +25,15 @@ contract StakingRewards {
 
         if (_totalSupply == 0) {
 
-            return rewardPerToken;
+            return rewardPerTokenStored;
         }
 
-        return rewardPerToken + (((block.timestamp - lastUpdateTime) * rewardRate * 1e18) / _totalSupply);
+        return rewardPerTokenStored + (((block.timestamp - lastUpdateTime) * rewardRate * 1e18) / _totalSupply);
     }
 
     function earned(address account) public view returns (uint) {
 
-        return ((_balances[account] * (rewardPerToken - userRewardPerTokenPaid[account])) / 1e18) + rewards[account];
+        return ((_balances[account] * (rewardPerToken() - userRewardPerTokenPaid[account])) / 1e18) + rewards[account];
     }    
 
     modifier updateReward(address account) {
